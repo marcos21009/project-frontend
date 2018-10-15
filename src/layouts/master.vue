@@ -1,5 +1,5 @@
 <template>
-  <q-layout :view="$q.platform.is.desktop ? 'hHh Lpr lFf' : 'lHh Lpr lfr'">
+  <q-layout view="lHh Lpr lFf">
 
     <!--=== HEADER ===-->
     <header-component></header-component>

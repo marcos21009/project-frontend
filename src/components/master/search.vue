@@ -1,12 +1,7 @@
 <template>
-  <div id="search" class="float-right">
+  <div id="search" class="float-left">
     <!--= Search Desktop =-->
-    <q-btn flat icon="fas fa-search" class="desktop-only">
-      <!-- Direct child of target -->
-      <q-popover anchor="bottom right"
-                 self="top right"
-                 @show="$refs.searchDesktop.focus()"
-                 class="q-pa-sm">
+
         <q-search
           ref="searchDesktop"
           v-model="searchData"
@@ -15,14 +10,17 @@
           @input="search"
           placeholder="Buscar"
           icon="fas fa-search"
+          class="desktop-only text-white no-shadow"
+          style="background-color: rgba(255,255,255,.25) !important"
+          inverted
+           
         />
-      </q-popover>
-    </q-btn>
+
 
     <!--= Search Mobile =-->
     <q-btn flat icon="fas fa-search"
            @click="modalSearch = true"
-           color="primary"
+           color="white"
            class="mobile-only btnMobile" />
 
     <q-modal v-model="modalSearch"
