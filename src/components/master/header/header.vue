@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <q-layout-header class="no-shadow"  color="primary">
+    <q-layout-header class="shadow-3"  color="primary">
       <!--==== TOOLBAR FOR MOBILE ====-->
       <q-toolbar class="q-py-sm q-px-none q-pr-sm">
         <q-toolbar-title class="q-pa-none">
@@ -79,7 +79,8 @@
     </q-layout-header>
 
     <!-- === MENU === -->
-    <q-layout-drawer class=""
+    <q-layout-drawer class="no-shadow"
+                     content-class="bg-white"
                      v-model="leftDrawerOpen"
                     width="250"
     >

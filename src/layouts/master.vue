@@ -5,7 +5,7 @@
     <header-component></header-component>
 
     <!--=== ROUTER VIEW ===-->
-    <q-page-container>
+    <q-page-container   content-class="bg-grey-3" >
       <router-view/>
     </q-page-container>
 

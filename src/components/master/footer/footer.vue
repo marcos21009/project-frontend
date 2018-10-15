@@ -1,5 +1,5 @@
 <template>
-  <q-layout-footer id="footer" class="no-shadow"  color="primary">
+  <q-layout-footer    id="footer" class="no-shadow"  color="primary">
 
     <!--=== COPYRIGHT ===-->
     <div class="copyright q-py-sm q-px-lg text-grey-8">

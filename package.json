@@ -1,10 +1,10 @@
 {
-  "name": "atcolombia",
+  "name": "agrocont",
   "version": "1.0.0",
-  "description": "Development by Imagina Colombia",
+  "description": "Development by TecnoDesign",
   "productName": "atcolombia",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "marcos Rativa <info@tecnodesign.com.co>",
+  "author": "Marcos Rativa <info@tecnodesign.com.co>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
