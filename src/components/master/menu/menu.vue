@@ -31,6 +31,7 @@
               <q-item-main label="Inicio" />
 
             </q-item>
+
             <q-collapsible icon="fas fa-cubes" label="Inventario">
 
               <q-item to="/contacto" >
@@ -39,7 +40,7 @@
 
               </q-item>
               <q-item to="/servicios" >
-                <q-item-side icon="fas fa-warehouse" />
+                <q-item                               -side icon="fas fa-warehouse" />
                 <q-item-main label="Bodegas" />
 
               </q-item>

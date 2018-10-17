@@ -2,7 +2,7 @@
   "name": "agrocont",
   "version": "1.0.0",
   "description": "Development by TecnoDesign",
-  "productName": "atcolombia",
+  "productName": "Agrocont",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Marcos Rativa <info@tecnodesign.com.co>",
   "private": true,
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@imagina/qhelper": "0.0.11",
+    "@imagina/quser": "0.0.25",
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",
     "vue-carousel": "^0.14.0",
