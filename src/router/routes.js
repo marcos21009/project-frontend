@@ -7,16 +7,21 @@ import access from '@imagina/quser/_router/middlewares/access' //Middleware acce
 Route.setViewResolver(component => require('src/layouts/' + component).default)
 
 /*=============== Route Redirects ===========================*/
-Route.redirect('/', '/inicio');
+Route.redirect('/', '/dashboard');
 
 /*===================== Routes ============================*/
-/*Pages*/
-Route.view('/', 'master')
+/*Home*/
+Route.view('/dashboard', 'master')
+  .guard(auth)
   .children(() => {
-      Route.view('/inicio', 'pages/1').options({
-        name: 'home',
-        guard:access
-      })
+      Route.view('/', 'pages/1').name('dashboard')
+    }
+  )
+
+/*Pages*/
+Route.view('/products', 'master')
+.guard(auth)
+  .children(() => {
       Route.view('/nosotros', 'pages/Index').options({
         name: 'nosotros',
         guard:access
@@ -42,6 +47,7 @@ Route.view('/', 'master')
 
 /*Categories*/
 Route.view('/productos', 'master')
+.guard(auth)
   .children(() => {
     Route.view('/', 'iblog/index').options({
       name: 'productos',

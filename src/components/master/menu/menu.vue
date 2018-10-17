@@ -26,7 +26,7 @@
           <!--= MENU =-->
           <q-list id="list_menu" class=" q-py-none">
             <q-list-header>Navegacion</q-list-header>
-            <q-item to="/inicio" >
+            <q-item to="/dashboard" >
               <q-item-side icon="home" />
               <q-item-main label="Inicio" />
 
@@ -34,13 +34,13 @@
 
             <q-collapsible icon="fas fa-cubes" label="Inventario">
 
-              <q-item to="/contacto" >
+              <q-item to="/products/contacto" >
                 <q-item-side icon="fas fa-cube" />
                 <q-item-main label="Productos" />
 
               </q-item>
-              <q-item to="/servicios" >
-                <q-item                               -side icon="fas fa-warehouse" />
+              <q-item to="/products/servicios" >
+                <q-item-side icon="fas fa-warehouse" />
                 <q-item-main label="Bodegas" />
 
               </q-item>
@@ -49,19 +49,19 @@
 
             <q-collapsible icon="far fa-credit-card" label="Compras">
 
-              <q-item to="/contacto" >
+              <q-item to="/products/contacto" >
                 <q-item-side icon="far fa-list-alt" />
                 <q-item-main label="Listar" />
 
               </q-item>
 
-              <q-item to="/servicios" >
+              <q-item to="/products/servicios" >
                 <q-item-side icon="fas fa-cart-plus" />
                 <q-item-main label="Pedidos" />
 
               </q-item>
 
-              <q-item to="/servicios" >
+              <q-item to="/products/servicios" >
                 <q-item-side icon="fas fa-handshake" />
                 <q-item-main label="Proveedores" />
 
@@ -69,7 +69,7 @@
 
             </q-collapsible>
 
-            <q-item to="/nosotros">
+            <q-item to="/products/nosotros">
               <q-item-side icon="fas fa-tasks" />
               <q-item-main label="Tareas" />
               <q-item-side right >
@@ -80,25 +80,25 @@
             </q-item>
 
             <q-collapsible icon="fas fa-dollar-sign" label="Ventas">
-              <q-item to="/servicios" >
+              <q-item to="/products/servicios" >
                 <q-item-side icon="far fa-list-alt" />
                 <q-item-main label="Listar" />
 
               </q-item>
-              <q-item to="/contacto" >
+              <q-item to="/products/contacto" >
                 <q-item-side icon="fas fa-warehouse" />
                 <q-item-main label="Bodegas" />
 
               </q-item>
 
-              <q-item to="/servicios" >
+              <q-item to="/products/servicios" >
                 <q-item-side icon="fas fa-users" />
                 <q-item-main label="Clientes" />
 
               </q-item>
 
             </q-collapsible>
-            <q-item to="/blog">
+            <q-item to="/products/blog">
               <q-item-side icon="fas fa-users-cog" />
               <q-item-main label="Empleados"/>
               <q-item-side right >

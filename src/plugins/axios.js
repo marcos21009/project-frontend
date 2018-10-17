@@ -32,7 +32,7 @@ axios.interceptors.response.use(function (response) {
         break
     }
   }else{
-    alert.error('Bad Gateway')
+   // alert.error('Bad Gateway')
   }
 });
 
