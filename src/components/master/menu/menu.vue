@@ -1,110 +1,123 @@
 <template>
   <div id="menu">
     <q-layout container style="height: 100vh;">
-      <q-layout-header class="no-shadow text-center q-py-md bg-primary">
+      <q-layout-header class="shadow-3 text-center q-py-md bg-primary">
         <!-- === LOGO === -->
         <router-link to="/" class="text-white " style="text-decoration: none">
     
     <div class="q-title text-bold">AGROCONT</div>
-          
- 
 
         </router-link>
       </q-layout-header>
 
-      <!--= Content Menu =-->
-      <q-page-container >
-        <!--= MENU =-->
-        <q-list id="list_menu" class=" q-py-none">
-          <q-item to="/inicio" >
-            <q-item-side icon="home" />
-            <q-item-main label="Inicio" />
+      <q-scroll-area
+              style="height: 100vh;"
+              :thumb-style="{
+    right: '4px',
+    borderRadius: '5px',
+    background: 'rgba(187, 187, 187)',
+    opacity: 0.4,
+    width: '7px',
+  }"
+              :delay="1500"
+      >
+        <!--= Content Menu =-->
+        <q-page-container >
+          <!--= MENU =-->
+          <q-list id="list_menu" class=" q-py-none">
+            <q-list-header>Navegacion</q-list-header>
+            <q-item to="/inicio" >
+              <q-item-side icon="home" />
+              <q-item-main label="Inicio" />
 
-          </q-item>
-        <q-collapsible icon="fas fa-cubes" label="Inventario">
+            </q-item>
 
-          <q-item to="/contacto" >
-          <q-item-side icon="fas fa-cube" />
-          <q-item-main label="Productos" />
+            <q-collapsible icon="fas fa-cubes" label="Inventario">
 
-        </q-item>
-        <q-item to="/servicios" >
-          <q-item-side icon="fas fa-warehouse" />
-          <q-item-main label="Bodegas" />
+              <q-item to="/contacto" >
+                <q-item-side icon="fas fa-cube" />
+                <q-item-main label="Productos" />
 
-        </q-item>
+              </q-item>
+              <q-item to="/servicios" >
+                <q-item                               -side icon="fas fa-warehouse" />
+                <q-item-main label="Bodegas" />
 
-      </q-collapsible>
+              </q-item>
 
-       <q-collapsible icon="far fa-credit-card" label="Compras">
+            </q-collapsible>
 
-        <q-item to="/contacto" >
-          <q-item-side icon="far fa-list-alt" />
-          <q-item-main label="Listar" />
+            <q-collapsible icon="far fa-credit-card" label="Compras">
 
-        </q-item>
+              <q-item to="/contacto" >
+                <q-item-side icon="far fa-list-alt" />
+                <q-item-main label="Listar" />
 
-        <q-item to="/servicios" >
-          <q-item-side icon="fas fa-cart-plus" />
-          <q-item-main label="Pedidos" />
+              </q-item>
 
-        </q-item>
+              <q-item to="/servicios" >
+                <q-item-side icon="fas fa-cart-plus" />
+                <q-item-main label="Pedidos" />
 
-        <q-item to="/servicios" >
-          <q-item-side icon="fas fa-handshake" />
-          <q-item-main label="Proveedores" />
+              </q-item>
 
-        </q-item>
+              <q-item to="/servicios" >
+                <q-item-side icon="fas fa-handshake" />
+                <q-item-main label="Proveedores" />
 
-      </q-collapsible>
+              </q-item>
 
-        <q-item to="/nosotros">
-          <q-item-side icon="fas fa-tasks" />
-          <q-item-main label="Tareas" />
-          <q-item-side right >
-            <q-chip color="green-4" dense>
-              2
-            </q-chip>
-          </q-item-side>
-        </q-item>
+            </q-collapsible>
 
-        <q-collapsible icon="fas fa-dollar-sign" label="Ventas">
-        <q-item to="/servicios" >
-          <q-item-side icon="far fa-list-alt" />
-          <q-item-main label="Listar" />
+            <q-item to="/nosotros">
+              <q-item-side icon="fas fa-tasks" />
+              <q-item-main label="Tareas" />
+              <q-item-side right >
+                <q-chip color="green-4" dense>
+                  2
+                </q-chip>
+              </q-item-side>
+            </q-item>
 
-        </q-item>
-        <q-item to="/contacto" >
-          <q-item-side icon="fas fa-warehouse" />
-          <q-item-main label="Bodegas" />
+            <q-collapsible icon="fas fa-dollar-sign" label="Ventas">
+              <q-item to="/servicios" >
+                <q-item-side icon="far fa-list-alt" />
+                <q-item-main label="Listar" />
 
-        </q-item>
+              </q-item>
+              <q-item to="/contacto" >
+                <q-item-side icon="fas fa-warehouse" />
+                <q-item-main label="Bodegas" />
 
-        <q-item to="/servicios" >
-          <q-item-side icon="fas fa-users" />
-          <q-item-main label="Clientes" />
+              </q-item>
 
-        </q-item>
+              <q-item to="/servicios" >
+                <q-item-side icon="fas fa-users" />
+                <q-item-main label="Clientes" />
 
-      </q-collapsible>
-        <q-item to="/blog">
-          <q-item-side icon="fas fa-users-cog" />
-          <q-item-main label="Empleados"/>
-           <q-item-side right >
-            <q-chip color="red-12" dense>
-              NEW
-            </q-chip>
-          </q-item-side>
-        </q-item>
-       
-        </q-list>
-        <information-component></information-component>
-      </q-page-container>
+              </q-item>
 
-      <q-layout-footer id="footer" class="no-shadow">
-        <!--= Information =-->
-        
-      </q-layout-footer>
+            </q-collapsible>
+            <q-item to="/blog">
+              <q-item-side icon="fas fa-users-cog" />
+              <q-item-main label="Empleados"/>
+              <q-item-side right >
+                <q-chip color="red-12" dense>
+                  NEW
+                </q-chip>
+              </q-item-side>
+            </q-item>
+
+          </q-list>
+          <information-component></information-component>
+        </q-page-container>
+
+        <q-layout-footer id="footer" class="no-shadow">
+          <!--= Information =-->
+
+        </q-layout-footer>
+      </q-scroll-area>
+
     </q-layout>
   </div>
 </template>
