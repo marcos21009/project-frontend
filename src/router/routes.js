@@ -1,4 +1,7 @@
 import Route from 'vue-routisan'
+import user from '@imagina/quser/_router/routes' //Routes module
+import auth from '@imagina/quser/_router/middlewares/auth' //Middleware auth
+import access from '@imagina/quser/_router/middlewares/access' //Middleware access
 
 // Define path where your views are stored
 Route.setViewResolver(component => require('src/layouts/' + component).default)
@@ -11,22 +14,28 @@ Route.redirect('/', '/inicio');
 Route.view('/', 'master')
   .children(() => {
       Route.view('/inicio', 'pages/1').options({
-        name: 'home'
+        name: 'home',
+        guard:access
       })
       Route.view('/nosotros', 'pages/Index').options({
-        name: 'nosotros'
+        name: 'nosotros',
+        guard:access
       })
       Route.view('/servicios', 'pages/Index').options({
-        name: 'servicios'
+        name: 'servicios',
+        guard:access
       })
       Route.view('/blog', 'pages/Index').options({
-        name: 'blog'
+        name: 'blog',
+        guard:access
       })
       Route.view('/contacto', 'pages/Index').options({
-        name: 'contacto'
+        name: 'contacto',
+        guard:access
       })
       Route.view('/Solicita-tu-Cotización', 'pages/Index').options({
-        name: 'cotizacion'
+        name: 'cotizacion',
+        guard:access
       })
     }
   )
@@ -35,10 +44,12 @@ Route.view('/', 'master')
 Route.view('/productos', 'master')
   .children(() => {
     Route.view('/', 'iblog/index').options({
-      name: 'productos'
+      name: 'productos',
+      guard:access
     }).children(() => {
       Route.view('/show', 'iblog/show').options({
-        name: 'show'
+        name: 'show',
+        guard:access
       })
     })
   })

@@ -36,43 +36,7 @@
 
         <q-btn round outline class="q-mx-xs" size="sm" color="white" icon="fas fa-cog" />
 
-          <q-btn-dropdown
-    color="white"
-    flat
-    icon="fas fa-user-circle"
-    id="user-dropdown"
-  >
-    <q-list>
-
-      <q-item tag="label" to="/">
-        <q-item-side>
-          <img src="../../../assets/image/logo.png" width="32px" style="border-radius: 100%">
-        </q-item-side>
-        <q-item-main>
-          <q-item-tile tag="a"
-                       color="tertiary"
-                       style="text-decoration: none">
-            Profile
-          </q-item-tile>
-        </q-item-main>
-      </q-item>
-
-
-      <q-item tag="label" link to="/">
-        <q-item-side>
-          <q-icon color="negative" name="fas fa-sign-out-alt" size="25px"></q-icon>
-        </q-item-side>
-        <q-item-main>
-          <q-item-tile tag="a"
-                       color="tertiary"
-                       style="text-decoration: none">
-            Sign out
-          </q-item-tile>
-        </q-item-main>
-      </q-item>
-
-    </q-list>
-  </q-btn-dropdown>
+       <widget-user></widget-user>
        
       </q-toolbar>
 
@@ -81,7 +45,7 @@
     <!-- === MENU === -->
     <q-layout-drawer class=""
                      v-model="leftDrawerOpen"
-                    width="250"
+                    :width="250"
     >
       <!-- === MENU MOBILE === -->
       <menuMaster></menuMaster>
@@ -97,7 +61,8 @@
   import menuMaster from 'src/components/master/menu/menu'
   import informationHeader from 'src/components/master/header/information'
   import searchComponent from 'src/components/master/search'
-
+  import WidgetUser from "@imagina/quser/_components/widget-user";
+  import {authPlugin} from "@imagina/quser/_plugins/auth";
   export default {
     props: {},
     components: {
@@ -105,7 +70,8 @@
       searchComponent,
       menuDesktop,
       menuMobile,
-      menuMaster
+      menuMaster,
+      WidgetUser
     },
     watch: {},
     mounted() {
@@ -115,6 +81,7 @@
     data() {
       return {
         leftDrawerOpen: true,
+        auth: require('@imagina/quser/_plugins/auth').default
       }
     },
     methods: {
