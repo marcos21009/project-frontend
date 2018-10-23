@@ -15,6 +15,7 @@
 
  <!--= Search =-->
         <search-component class=""></search-component>
+            <land-component></land-component>
     </q-toolbar-title>
 
         <!--= FULLSCREEN =-->
@@ -64,6 +65,7 @@
   import searchComponent from 'src/components/master/search'
   import WidgetUser from "@imagina/quser/_components/widget-user";
   import {authPlugin} from "@imagina/quser/_plugins/auth";
+  import landComponent from "src/components/master/header/selectLand"
   export default {
     props: {},
     components: {
@@ -72,7 +74,8 @@
       menuDesktop,
       menuMobile,
       menuMaster,
-      WidgetUser
+      WidgetUser,
+        landComponent
     },
     watch: {},
     mounted() {

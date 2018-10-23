@@ -31,10 +31,23 @@
               <q-item-main label="Inicio" />
 
             </q-item>
+            <q-collapsible icon="fas fa-warehouse" label="Fincas">
 
+              <q-item :to="{name:'lands.lots'}">
+                <q-item-side icon="fas fa-clone" />
+                <q-item-main label="Lotes" />
+
+              </q-item>
+              <q-item>
+                <q-item-side icon="fas fa-pagelines" />
+                <q-item-main label="Cultivos" />
+
+              </q-item>
+
+            </q-collapsible>
             <q-collapsible icon="fas fa-cubes" label="Inventario">
 
-              <q-item to="/products/contacto" >
+              <q-item :to="{name:'product.index'}">
                 <q-item-side icon="fas fa-cube" />
                 <q-item-main label="Productos" />
 

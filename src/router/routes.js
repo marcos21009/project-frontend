@@ -12,7 +12,7 @@ Route.redirect('/', '/dashboard');
 /*===================== Routes ============================*/
 /*Home*/
 Route.view('/dashboard', 'master')
-  .guard(auth)
+ //.guard(auth)
   .children(() => {
       Route.view('/', 'pages/1').name('dashboard')
     }
@@ -20,45 +20,11 @@ Route.view('/dashboard', 'master')
 
 /*Pages*/
 Route.view('/products', 'master')
-.guard(auth)
+//.guard(auth)
   .children(() => {
-      Route.view('/nosotros', 'pages/Index').options({
-        name: 'nosotros',
-        guard:access
-      })
-      Route.view('/servicios', 'pages/Index').options({
-        name: 'servicios',
-        guard:access
-      })
-      Route.view('/blog', 'pages/Index').options({
-        name: 'blog',
-        guard:access
-      })
-      Route.view('/contacto', 'pages/Index').options({
-        name: 'contacto',
-        guard:access
-      })
-      Route.view('/Solicita-tu-Cotización', 'pages/Index').options({
-        name: 'cotizacion',
-        guard:access
-      })
+      Route.view('/index','inventory/products/index' ).name('product.index')
     }
   )
-
-/*Categories*/
-Route.view('/productos', 'master')
-.guard(auth)
-  .children(() => {
-    Route.view('/', 'iblog/index').options({
-      name: 'productos',
-      guard:access
-    }).children(() => {
-      Route.view('/show', 'iblog/show').options({
-        name: 'show',
-        guard:access
-      })
-    })
-  })
 
 Route.view('*', 'pages/404')//Route error 404
 
