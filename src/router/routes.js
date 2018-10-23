@@ -2,6 +2,7 @@ import Route from 'vue-routisan'
 import user from '@imagina/quser/_router/routes' //Routes module
 import auth from '@imagina/quser/_router/middlewares/auth' //Middleware auth
 import access from '@imagina/quser/_router/middlewares/access' //Middleware access
+import crudRoutes from './crudRoutes'
 
 // Define path where your views are stored
 Route.setViewResolver(component => require('src/layouts/' + component).default)
@@ -12,7 +13,7 @@ Route.redirect('/', '/dashboard');
 /*===================== Routes ============================*/
 /*Home*/
 Route.view('/dashboard', 'master')
- //.guard(auth)
+ .guard(auth)
   .children(() => {
       Route.view('/', 'pages/1').name('dashboard')
     }
@@ -20,7 +21,7 @@ Route.view('/dashboard', 'master')
 
 /*Pages*/
 Route.view('/products', 'master')
-//.guard(auth)
+.guard(auth)
   .children(() => {
       Route.view('/index','inventory/products/index' ).name('product.index')
     }

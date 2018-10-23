@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import CrudRoutes from './crudRoutes'
 import routes from './routes'
 
 Vue.use(VueRouter);

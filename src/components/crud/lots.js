@@ -4,6 +4,7 @@ import {alert} from '@imagina/qhelper/_plugins/alert'
 import {required, email, sameAs, minLength} from 'vuelidate/lib/validators';
 import _pick from 'lodash.pick'
 import service from "src/services/lots";
+ import {helper} from '@imagina/qhelper/_plugins/helper'
 
 
 export const crudActions = {
@@ -19,11 +20,7 @@ export const crudActions = {
             tooltip: '',
             //permission:''
         },
-        delete: {
-            icon: 'delete',
-            tooltip: '',
-            //permission:''
-        },
+
         edit: {
             icon: 'edit',
             tooltip: '',
@@ -88,9 +85,9 @@ export const crudFields = {
             }
         },
         status: {
-            type: 'text',
+            type: 'select',
             label: 'Estado',
-            name: 'name',
+            name: 'status',
             placeHolder: '',
             viewPosition: 'left',
             radio: true,
@@ -176,7 +173,7 @@ export const crudFields = {
         thickness: {
             type: 'number',
             label: 'Espesor de Tierra negra',
-            name: 'slope',
+            name: 'thickness',
             placeHolder: 'cm',
             viewPosition: 'left',
             rules: {
@@ -274,6 +271,7 @@ export const crudForm = {
         name: '',
         area:'',
         slope:'',
+        status:0,
         texture:0,
         thickness:''
     })
@@ -291,7 +289,6 @@ export const crudOps = { // CRUD
         crudTable.headers.forEach(element => {
             headers.push(element.value);
         })
-        console.log("headers", headers)
 
         let headerData = [];
         await service.index(filter)
@@ -368,6 +365,7 @@ export const crudOps = { // CRUD
         let data = {
             attributes: attributes
         }
+        data.attributes.land_id = await helper.storage.get.item("landSelected");
         await service.create(data)
             .then((response) => {
                 alert.success('Lot Created', 'top')

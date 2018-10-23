@@ -2,111 +2,93 @@ import {Cookies, LocalStorage} from 'quasar'
 import config from 'src/config/index'
 import http from "axios"
 import {helper} from "@imagina/qhelper/_plugins/helper"
-import {remember} from "@imagina/qhelper/_plugins/remember"
+import {remember} from '@imagina/qhelper/_plugins/remember'
 
 export default {
-
-    /**
-     * Get lots
-     */
-    index() {
-        return new Promise((resolve, reject) => {
-            http.get(config('api.api_url') + '/agrocont/lots')
-                .then(response => {
-                    resolve(response.data);
-                })
-                .catch(error => {
-                    reject([]);
-                })
+  
+  index(filter, take, page, fields, include) {
+    
+    filter = JSON.stringify(filter);
+    let key = ":"+JSON.stringify(filter + take + page + fields + include);
+    key = key==":null" ? "" : key;
+    return new Promise((resolve, reject) => {
+      remember.async("agrocount"+key, 3600 * 3, () => {
+        return http.get(config('api.api_url') + '/agrocont/lots', {
+          params: {
+            filter: filter,
+            take: take,
+            page: page,
+            fields: fields,
+            include: include
+          }
+        })
+      }).then(response => {
+        resolve(response);
+      })
+        .catch(error => {
+          reject(error);
         });
-    },
-
-    /**
-     * Get a PreLead
-     *
-     * @param id{int} required
-     */
-    show(id) {
-        return new Promise((resolve, reject) => {
-            http.get(config('api.api_url') + '/lots/' + id, {
-                params: {}
-            })
-                .then(response => {
-                    resolve(response.data);
-                })
-                .catch(error => {
-                    reject([]);
-                })
+    });
+  },
+  
+  
+  show(id,filter, fields, include) {
+    filter = JSON.stringify(filter);
+    let key = JSON.stringify(filter + fields + include + id);
+    return new Promise((resolve, reject) => {
+      //remember.async(key, 3600 * 3, () => {
+      return http.get(config('api.api_url') + '/agrocont/lots/' + id, {
+        params: {
+          filter: filter,
+          fields: fields,
+          include: include
+        }
+        /* })*/
+      }).then(response => {
+        resolve(response.data);
+      })
+        .catch(error => {
+          reject(error);
         });
-    },
-
-    /**
-     * Create PreLead
-     *
-     * @param dataPrelead {object} require
-     * @returns {object}
-     */
-    create(data) {
-        return new Promise((resolve, reject) => {
-            http.post(config('api.api_url') + '/lots', data)
-                .then(response => {
-                    resolve(response.data);
-                })
-                .catch(error => {
-                    reject(error);
-                });
+    });
+  },
+  
+  update(data,id) {
+    return new Promise((resolve, reject) => {
+      http.put(config('api.api_url') + '/agrocont/lots/'+id, data)
+        .then(response => {
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
         });
-    },
-
-    /**
-     * Update PreLead
-     * @param id {int} require
-     * @param data {object} require
-     * @returns {object}
-     */
-    update(data, id) {
-        return new Promise((resolve, reject) => {
-            http.put(config('api.api_url') + '/lots/' + id, data)
-                .then(response => {
-                    resolve(response.data);
-                })
-                .catch(error => {
-                    reject(error);
-                });
+    });
+  },
+  
+  create(data) {
+    console.log(data)
+    return new Promise((resolve, reject) => {
+      http.post(config('api.api_url') + '/agrocont/lots', data)
+        .then(response => {
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
         });
-    },
-
-    /**
-     * Data for dashboard
-     *
-     * @param reports{array} requiere
-     * @param filter{object}
-     * @returns {Promise<any>}
-     */
-    async dashBoard(reports, filter) {
-        filter ? true : filter = {} //If no exist filter
-        let departmentSelected = await helper.storage.get.item("depSelected")
-        if (!departmentSelected)
-            filter.departmentId = await helper.storage.get.item('userData').departments[0].id;
-        else if (departmentSelected != 'all')
-            filter.departmentId = departmentSelected//Add department ID
-        auth.hasAccess('fhia.roles.dept-manager') ? true :
-            filter.userId = await helper.storage.get.item("userId") //Add user id
-
-        return new Promise((resolve, reject) => {
-            remember.async('preleadDashborad' + JSON.stringify(filter), 3600 * 3, () => {
-                return http.get(config('api.api_url') + '/lots/dashboard', {
-                    params: {
-                        reports: JSON.stringify(reports),
-                        filter: JSON.stringify(filter)
-                    }
-                })
-            }).then(response => {
-                resolve(response.data);
-            })
-                .catch(error => {
-                    reject([]);
-                });
+    });
+  },
+  
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      http.delete(config('api.api_url') + '/agrocont/lots/'+id)
+        .then(response => {
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
         });
-    },
+    });
+  },
+  
+
 }

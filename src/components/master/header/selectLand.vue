@@ -1,6 +1,10 @@
 <template>
-    <div id="landselect">
-       <q-modal v-model="modalShow">
+    <div id="landSelect" class="q-mx-md float-left ">
+       <q-modal 
+       maximized
+       no-esc-dismiss
+       no-backdrop-dismiss
+       v-model="modalShow">
             <h4>Seleccione su finca </h4>
             <q-select
                     v-model="land"
@@ -9,9 +13,10 @@
                     :options="landsOptions"></q-select>
         </q-modal>
         <q-select
+
                 v-model="land"
                 radio @input="selectLand()"
-                color="cyan-1" inverted
+                color="secondary"
                 :options="landsOptions"></q-select>
     </div>
 
@@ -64,6 +69,11 @@
     }
 </script>
 
-<style>
-
+<style  lang="stylus">
+  @import "~variables";
+  #landSelect
+    .q-select
+        width 200px
+        .q-input-target
+            color white !important
 </style>
